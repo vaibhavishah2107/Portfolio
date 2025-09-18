@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vaibhavi Shah | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      line-height: 1.6;
+      color: var(--text-color);
+      background-color: var(--bg-color);
+      transition: background-color 0.3s, color 0.3s;
+    }
+    :root {
+      --bg-color: #fdfdfd;
+      --text-color: #333333;
+      --primary-color: #4a90e2;
+      --secondary-color: #ff7043;
+      --highlight-color: #4a90e2;
+      --card-bg: #ffffff;
+      --header-bg: #ffffff;
+    }
+    [data-theme="dark"] {
+      --bg-color: #1f1f1f;
+      --text-color: #e0e0e0;
+      --primary-color: #80b3ff;
+      --secondary-color: #ffa270;
+      --card-bg: #2a2a2a;
+      --header-bg: #2a2a2a;
+    }
+    .container { width: 90%; max-width: 1000px; margin: auto; }
+    header {
+      width: 100%; position: fixed; top: 0; left: 0;
+      background-color: var(--header-bg); padding: 1rem 0;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1); z-index: 1000;
+    }
+    .header-container { display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-size: 1.5rem; font-weight: 700; }
+    .nav-links { list-style: none; display: flex; gap: 1.5rem; }
+    .nav-links a { text-decoration: none; color: var(--text-color); font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--primary-color); }
+    .hamburger { display: none; flex-direction: column; cursor: pointer; gap: 5px; }
+    .hamburger span { width: 25px; height: 3px; background-color: var(--text-color); transition: background-color 0.3s; }
+    .hero-section { height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding-top: 60px; }
+    .hero-content h1 { font-size: 2.75rem; margin-bottom: 1rem; }
+    .hero-content .highlight { color: var(--highlight-color); }
+    .hero-content p { font-size: 1.2rem; margin-bottom: 1.5rem; }
+    .btn {
+      background-color: var(--primary-color); color: #fff; padding: 0.75rem 1.5rem;
+      text-decoration: none; border: none; border-radius: 4px; font-size: 1rem;
+      cursor: pointer; transition: background-color 0.3s;
+    }
+    .btn:hover { background-color: var(--secondary-color); }
+    .section { padding: 4rem 0; }
+    h2 { font-size: 2rem; margin-bottom: 1.5rem; text-align: center; }
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1rem; justify-items: center; }
+    .skill-card {
+      background-color: var(--card-bg); padding: 1rem 1.5rem; border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1); font-weight: 600; width: 100%; text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .skill-card:hover { transform: translateY(-5px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; }
+    .project-card {
+      background-color: var(--card-bg); padding: 1.5rem; border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1); display:flex; flex-direction:column; justify-content:space-between;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .project-card h3 { margin-bottom: 1rem; }
+    .project-card p { flex-grow: 1; }
+    .project-card a {
+      margin-top: 1rem; align-self: start; text-decoration: none; color: var(--primary-color);
+      font-weight: 500; border: 1px solid var(--primary-color); padding: 0.5rem 1rem; border-radius: 4px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .project-card a:hover { background-color: var(--primary-color); color: #fff; }
+    .contact-list { list-style: none; max-width: 400px; margin: auto; text-align: center; }
+    .contact-list li { margin-bottom: 1rem; }
+    .contact-list a { color: var(--primary-color); text-decoration: none; font-weight: 500; }
+    .contact-list a:hover { text-decoration: underline; }
+    .footer { background-color: var(--header-bg); padding: 1.5rem 0; text-align: center; }
+    .hidden { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+    .visible { opacity: 1; transform: translateY(0px); }
+    @media (max-width: 768px) {
+      .nav-links {
+        position: fixed; top: 60px; right: -100%; width: 200px; height: calc(100vh - 60px);
+        background-color: var(--header-bg); flex-direction: column; align-items: center; gap: 1.5rem;
+        padding-top: 1rem; transition: right 0.3s ease-in-out;
+      }
+      .nav-links.open { right: 0; }
+      .hamburger { display: flex; }
+    }
+    @media (max-width: 480px) {
+      .hero-content h1 { font-size: 2.25rem; }
+      .hero-content p { font-size: 1rem; }
+    }
+    .container{
+        text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container header-container">
+      <div class="logo">Vaibhavi Shah</div>
+      <nav class="nav">
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About Me</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="theme-toggle" id="theme-toggle">🌙</button>
+      </nav>
+      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </header>
+
+  <section id="home" class="hero-section section">
+    <div class="container hero-content">
+      <h1>Hello, I’m <span class="highlight">Vaibhavi Shah</span></h1>
+      <p>Developer from Madhav Institute of Technology & Science, Gwalior. I build websites and solve problems using HTML, CSS, JavaScript, C++ & Python.</p>
+      <a href="#projects" class="btn">See My Work</a>
+    </div>
+  </section>
+
+  <section id="about" class="about-section section">
+    <div class="container">
+      <h2>About Me</h2>
+      <p>I’m a student at Madhav Institute of Technology & Science, Gwalior. I enjoy crafting clean & efficient code, building interactive websites, solving algorithms in C++ & Python, and constantly learning new technologies.</p>
+    </div>
+  </section>
+
+  <section id="skills" class="skills-section section">
+    <div class="container">
+      <h2>Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-card">HTML</div>
+        <div class="skill-card">CSS</div>
+        <div class="skill-card">JavaScript</div>
+        <!-- fixed the typo here: use class="skill-card" -->
+        <div class="skill-card">C++</div>
+        <div class="skill-card">Python</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="projects-section section">
+    <div class="container">
+      <h2>Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <h3>Project One</h3>
+          <p>Responsive website using HTML, CSS and JavaScript.</p>
+          <a href="xloginfororder.html" target="_blank">View Project</a>
+        </div>
+        <div class="project-card">
+          <h3>Project Two</h3>
+          <p>Responsive website using HTML, CSS and JavaScript.</p>
+          <a href="waste_management_sys.html" target="_blank">View Project</a>
+        </div>
+        <div class="project-card">
+          <h3>Project Three</h3>
+          <p>Responsive website made for SIH hackathon using HTML, CSS and JavaScript.</p>
+          <a href="vstudent_management_sys.html" target="_blank">View Project</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact-section section">
+    <div class="container">
+      <h2>Contact Me</h2>
+      <p id="One">If you’d like to chat, collaborate, or just say hi, feel free to reach out via:</p>
+      <ul class="contact-list">
+        <li>Email: <a href="mailto:vaibhavishah2107@gmail.com">vaibhavishah2107@gmail.com</a></li>
+        <li>GitHub: <a href="https://github.com/vaibhavishah2107" target="_blank">github.com/yourusername</a></li>
+        <li>LinkedIn: <a href="https://www.linkedin.com/in/vaibhavi-shah-89bbb6355" target="_blank">linkedin.com/in/vaibhavi-shah-89bbb6355</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <!-- <p>© 2025 Vaibhavi Shah. All rights reserved.</p> -->
+    </div>
+  </footer>
+
+  <script>
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const rootElement = document.documentElement;
+
+    themeToggleBtn.addEventListener('click', () => {
+      if (rootElement.getAttribute('data-theme') === 'dark') {
+        rootElement.setAttribute('data-theme', 'light');
+        themeToggleBtn.textContent = '🌙';
+      } else {
+        rootElement.setAttribute('data-theme', 'dark');
+        themeToggleBtn.textContent = '☀️';
+      }
+    });
+
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.querySelector('.nav-links');
+
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const revealElements = document.querySelectorAll('.section');
+      const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+      const revealOnScroll = (entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      };
+      const sectionObserver = new IntersectionObserver(revealOnScroll, observerOptions);
+      revealElements.forEach(sec => {
+        sec.classList.add('hidden');
+        sectionObserver.observe(sec);
+      });
+    });
+  </script>
+</body>
+</html>
