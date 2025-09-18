@@ -1,0 +1,361 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home – Elite Eats</title>
+  <style>
+    /* Basic reset and base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #faf8f5;
+      color: #333;
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    header {
+      background-color: #fff;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1em 2em;
+      flex-wrap: wrap;
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #ff7f50;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1em;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      padding: 0.5em 1em;
+      border-radius: 6px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .nav-links a:hover {
+      background-color: #ff7f50;
+      color: #fff;
+    }
+    #theme-btn {
+      padding: 0.5em 1em;
+      background-color: #ff7f50;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+    #theme-btn:hover {
+      background-color: #ff6347;
+      transform: scale(1.05);
+    }
+    #search-input {
+      padding: 0.6em 1em;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      outline: none;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    #search-input:focus {
+      border-color: #ff7f50;
+      box-shadow: 0 0 5px rgba(255,127,80,0.5);
+    }
+
+    main {
+      flex: 1;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    section {
+      padding: 2em;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 1em;
+      font-size: 2rem;
+      color: #555;
+    }
+
+    
+    #menu {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 30px;
+      margin-top: 1em;
+    }
+    .food_item {
+      background-color: white;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s, opacity 0.3s;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .food_item img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+    .food_item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+    .food_item:hover img {
+      transform: scale(1.1);
+    }
+
+    /* Feedback section */
+    .feedback-section {
+      background-color: #fff;
+      padding: 2em;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      max-width: 800px;
+      margin: 2em auto;
+    }
+    .feedback-section form {
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+    }
+    .feedback-section label {
+      color: #555;
+      font-weight: 500;
+    }
+    .feedback-section input, .feedback-section textarea {
+      padding: 0.75em;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      resize: vertical;
+      font-size: 1rem;
+    }
+    .feedback-section button {
+      align-self: start;
+      background-color: #ff7f50;
+      color: white;
+      padding: 0.75em 1.5em;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+    .feedback-section button:hover {
+      background-color: #ff6347;
+      transform: scale(1.05);
+    }
+    .feedback-list {
+      margin-top: 2em;
+    }
+    .feedback-item {
+      background-color: #f0f0f0;
+      padding: 1em;
+      border-radius: 8px;
+      margin-bottom: 1em;
+    }
+    .feedback-item .name {
+      font-weight: bold;
+      margin-bottom: 0.5em;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #333;
+      color: #eee;
+      padding: 2em;
+      text-align: center;
+    }
+    .footer-info {
+      margin-bottom: 1em;
+    }
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1em;
+      font-size: 1.5rem;
+    }
+    .social-icons a {
+      color: #eee;
+      transition: color 0.3s;
+    }
+    .social-icons a:hover {
+      color: #ff7f50;
+    }
+
+    /* Dark mode */
+    body.dark-mode {
+      background-color: #2c2c2c;
+      color: #eee;
+    }
+    body.dark-mode .food_item {
+      background-color: #444;
+    }
+    body.dark-mode nav {
+      background-color: #222;
+    }
+    body.dark-mode .nav-links a {
+      color: #ccc;
+    }
+    body.dark-mode .nav-links a:hover {
+      background-color: #ff7f50;
+      color: #fff;
+    }
+    body.dark-mode footer {
+      background-color: #111;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        gap: 1em;
+      }
+      section {
+        padding: 1em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">Elite Eats</div>
+      <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">Menu</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+      </div>
+      <input type="text" id="search-input" placeholder="Search menu items...">
+      <button id="theme-btn">Toggle Theme</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="menu-section">
+      <h2>What are you craving for?</h2>
+      <div id="menu">
+        <div class="food_item" data-name="Pizza"><img src="pizza1.png" alt="Pizza"></div>
+        <div class="food_item" data-name="Garlic Bread"><img src="garlic_bread.jpg" alt="Garlic Bread"></div>
+        <div class="food_item" data-name="Burger"><img src="burger.jpeg" alt="Burger"></div>
+        <div class="food_item" data-name="Beverages"><img src="beverages.png" alt="Beverages"></div>
+        <div class="food_item" data-name="Desserts"><img src="deserts.png" alt="Desserts"></div>
+      </div>
+    </section>
+
+    <section id="feedback-section">
+      <h2>Feedback</h2>
+      <div class="feedback-section">
+        <form id="feedbackForm">
+          <label for="fbName">Name</label>
+          <input type="text" id="fbName" name="fbName" placeholder="Your name" required>
+          <label for="fbMessage">Feedback</label>
+          <textarea id="fbMessage" name="fbMessage" rows="4" placeholder="Your feedback..." required></textarea>
+          <button type="submit">Submit Feedback</button>
+        </form>
+        <div id="feedbackList" class="feedback-list">
+       
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-info">Elite Eats • Your local favourite food hub</div>
+    <div class="footer-info">Contact: +91-7400777296 • vaibhavishah2107@gmail.com</div>
+    <div class="social-icons">
+      <a href="#" aria-label="Facebook">🔵</a>
+      <a href="#" aria-label="Instagram">📸</a>
+      <a href="#" aria-label="Twitter">🐦</a>
+    </div>
+    <div style="margin-top:1em; font-size:0.8rem;">© 2025 Elite Eats. All rights reserved.</div>
+  </footer>
+
+  <script>
+    // Theme toggle
+    const themeBtn = document.getElementById('theme-btn');
+    themeBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+    });
+
+    // Search functionality for menu items
+    const searchInput = document.getElementById('search-input');
+    const foodItems = document.querySelectorAll('.food_item');
+
+    searchInput.addEventListener('input', () => {
+      const query = searchInput.value.trim().toLowerCase();
+      foodItems.forEach(item => {
+        const name = item.getAttribute('data-name').toLowerCase();
+        if (name.includes(query) || query === "") {
+          item.style.display = 'flex';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    });
+
+    // Feedback form: add submitted feedback to page
+    const fbForm = document.getElementById('feedbackForm');
+    const feedbackList = document.getElementById('feedbackList');
+
+    fbForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const nameInput = document.getElementById('fbName');
+      const msgInput = document.getElementById('fbMessage');
+      const name = nameInput.value.trim();
+      const message = msgInput.value.trim();
+      if (name && message) {
+        // Create a new feedback item
+        const div = document.createElement('div');
+        div.classList.add('feedback-item');
+        const pName = document.createElement('div');
+        pName.classList.add('name');
+        pName.textContent = name;
+        const pMsg = document.createElement('div');
+        pMsg.classList.add('message');
+        pMsg.textContent = message;
+        div.appendChild(pName);
+        div.appendChild(pMsg);
+        // Prepend so newest feedback appears on top
+        feedbackList.prepend(div);
+        // Clear form
+        fbForm.reset();
+      }
+    });
+  </script>
+</body>
+</html>
+
