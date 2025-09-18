@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MindHelp — Landing + Login</title>
+  <meta name="description" content="AI-driven mental health & psychological support for higher education students." />
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --accent: #A8DADC;        /* calm teal */
+      --accent-dark: #457B9D;
+      --btn-bg: #F1FAEE;         /* light neutral background */
+      --btn-hover: #A8DADC;
+      --muted: #6b7280;
+      --glass: rgba(255,255,255,0.6);
+      --radius: 12px;
+      --text-accent: #457B9D;
+    }
+    body {
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: #F1FAEE;
+      color: #111;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    .brand-logo {
+      width:44px; height:44px; border-radius:10px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      display:flex; align-items:center; justify-content:center; color:#fff; font-weight:800;
+    }
+    .feature-card {
+      background: var(--glass); padding:.6rem; border-radius:10px;
+      display:flex; gap:.75rem; align-items:center;
+    }
+    .icon-box {
+      width:44px; height:44px; border-radius:8px;
+      background:#fff; display:grid; place-items:center; font-weight:800;
+      color: var(--accent-dark);
+    }
+    .card-round {
+      border-radius: var(--radius);
+      box-shadow:0 8px 30px rgba(16,24,40,0.06);
+    }
+    .kicker {
+      color: var(--accent-dark); font-weight:700; letter-spacing:1px;
+      text-transform:uppercase; font-size:.8rem;
+    }
+    .muted {
+      color: var(--muted);
+    }
+    footer {
+      font-size:.9rem; color: var(--muted);
+    }
+    /* Button styles */
+    .btn-primary {
+      background-color: var(--accent) !important;
+      border-color: var(--accent-dark) !important;
+      color: black !important;
+    }
+    .btn-primary:hover, .btn-primary:focus {
+      background-color: var(--accent-dark) !important;
+      border-color: var(--accent-dark) !important;
+      color: black !important;
+    }
+    .btn-ghost {
+      background: transparent !important;
+      border:1px solid var(--accent-dark) !important;
+      color: var(--accent-dark) !important;
+    }
+    .btn-ghost:hover, .btn-ghost:focus {
+      background-color: var(--accent) !important;
+      border-color: var(--accent-dark) !important;
+      color: #ffffff !important;
+    }
+    /* Hero description tweaks */
+    .hero-description {
+      margin-top: 1.5rem;
+      color: var(--accent-dark);
+    }
+    /* Login Modal Styles (if any override) */
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <header class="sticky-top bg-white bg-opacity-50 border-bottom">
+    <nav class="container navbar navbar-expand-lg">
+      <div class="container-fluid p-0 align-items-center">
+        <div class="d-flex align-items-center gap-2">
+          <div class="brand-logo">MH</div>
+          <div class="d-none d-lg-block">
+            <div class="fw-bold" style="color: var(--accent-dark)">MindHelp</div>
+            <div class="text-muted" style="font-size:.85rem">Digital mental health for students</div>
+          </div>
+        </div>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navPrimary" aria-controls="navPrimary" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-end" id="navPrimary">
+          <ul class="navbar-nav align-items-lg-center">
+            <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+            <li class="nav-item"><a class="nav-link" href="#how">How it works</a></li>
+            <li class="nav-item"><a class="nav-link" href="#research">Research</a></li>
+            <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+            <li class="nav-item ms-lg-3"><button class="btn btn-primary" id="openLoginBtn">Login</button></li>
+            <li class="nav-item ms-lg-3"><a class="btn btn-primary" href="#contact">Get Started</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- MAIN -->
+  <main class="container py-5">
+    <!-- HERO -->
+    <section class="row align-items-center gy-4">
+      <div class="col-lg-7">
+        <div class="kicker">AI + Psychology</div>
+        <h1 class="display-6 fw-bold">Digital mental health & psychological support for students</h1>
+        <p class="text-muted hero-description">An integrated platform combining an AI companion, mood tracking, attention insights, gamified engagement and counselor support — built to reduce stigma and improve mental well-being on campus.</p>
+        <div class="d-flex flex-wrap gap-2">
+          <a class="btn btn-primary" href="#features">Explore features</a>
+          <a class="btn btn-ghost" href="#research">Read research</a>
+        </div>
+      </div>
+
+      <aside class="col-lg-5">
+        <div class="p-3 card-round bg-white">
+          <h6 class="fw-bold mb-3">Quick features</h6>
+          <div class="row row-cols-2 g-2">
+            <div class="col">
+              <div class="feature-card">
+                <div class="icon-box">AI</div>
+                <div>
+                  <div class="fw-bold">AI Companion</div>
+                  <div class="muted small">Friendly NLP-based support to chat</div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="feature-card">
+                <div class="icon-box">🎮</div>
+                <div>
+                  <div class="fw-bold">Gamified Engagement</div>
+                  <div class="muted small">Streaks & rewards</div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="feature-card">
+                <div class="icon-box">⏱</div>
+                <div>
+                  <div class="fw-bold">Screen Time</div>
+                  <div class="muted small">Student’s phone usage breakdown</div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="feature-card">
+                <div class="icon-box">📝</div>
+                <div>
+                  <div class="fw-bold">Journaling</div>
+                  <div class="muted small">Mood detection for students</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- FEATURES -->
+    <section id="features" class="mt-5">
+      <h2>Features</h2>
+      <p class="muted">Six core features designed for students' mental wellness.</p>
+
+      <div class="row g-4 mt-2">
+        <div class="col-md-6 col-xl-4">
+          <div class="card p-3 card-round h-100">
+            <h5 class="mb-1">1. AI Companion</h5>
+            <p class="muted mb-0">Conversational agent powered by Transformers for empathetic conversations, CBT-style prompts, and escalation to counselors when needed.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-xl-4">
+          <div class="card p-3 card-round h-100">
+            <h5 class="mb-1">2. Gamified Engagement</h5>
+            <p class="muted mb-0">Streaks, micro-challenges and rewards to encourage healthy habits and continuous use.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-xl-4">
+          <div class="card p-3 card-round h-100">
+            <h5 class="mb-1">3. Screen Time & Attention Insights</h5>
+            <p class="muted mb-0">Analytics showing most-used apps, focus interruptions, and suggestions to improve concentration.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-xl-4">
+          <div class="card p-3 card-round h-100">
+            <h5 class="mb-1">4. Mood Tracker & Journaling</h5>
+            <p class="muted mb-0">Quick mood check-ins, expressive journaling with automatic sentiment detection and trends over time.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-xl-4">
+          <div class="card p-3 card-round h-100">
+            <h5 class="mb-1">5. Counselor Support & Booking</h5>
+            <p class="muted mb-0">In-app scheduling, secure messaging, and escalation workflows compliant with privacy standards.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-xl-4">
+          <div class="card p-3 card-round h-100">
+            <h5 class="mb-1">6. Research Dashboard & Insights</h5>
+            <p class="muted mb-0">Aggregate anonymized metrics to inform campus interventions and program evaluation.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="how" class="mt-5">
+      <h2>How it works</h2>
+      <div class="row g-4 mt-2">
+        <div class="col-lg-8">
+          <div class="card p-3 card-round">
+            <div class="d-flex flex-column gap-3">
+              <div class="d-flex gap-3">
+                <div class="bg-primary text-white rounded-3 d-flex align-items-center justify-content-center" style="width:40px;height:40px">1</div>
+                <div>
+                  <div class="fw-bold">Sign up & personalize</div>
+                  <div class="muted small">Students set preferences, goals and consent levels.</div>
+                </div>
+              </div>
+
+              <div class="d-flex gap-3">
+                <div class="bg-primary text-white rounded-3 d-flex align-items-center justify-content-center" style="width:40px;height:40px">2</div>
+                <div>
+                  <div class="fw-bold">Use tools</div>
+                  <div class="muted small">Chat with AI, journal, join challenges and track mood.</div>
+                </div>
+              </div>
+
+              <div class="d-flex gap-3">
+                <div class="bg-primary text-white rounded-3 d-flex align-items-center justify-content-center" style="width:40px;height:40px">3</div>
+                <div>
+                  <div class="fw-bold">Monitor progress</div>
+                  <div class="muted small">Insights surface trends and flags for counselor review.</div>
+                </div>
+              </div>
+
+              <div class="d-flex gap-3">
+                <div class="bg-primary text-white rounded-3 d-flex align-items-center justify-content-center" style="width:40px;height:40px">4</div>
+                <div>
+                  <div class="fw-bold">Escalate when needed</div>
+                  <div class="muted small">Seamless referral to on-campus counseling with user consent.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="col-lg-4">
+          <div class="card p-3 card-round h-100">
+            <h5>Tech & Compliance</h5>
+            <p class="muted mb-0">React / React Native, Node / FastAPI, MongoDB/SQL, Transformers (Hugging Face). Security: OAuth2, TLS, HIPAA/GDPR-aligned handling for sensitive data.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Other sections … -->
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-4 border-top">
+    <div class="container d-flex justify-content-between flex-column flex-md-row gap-2">
+      <div class="text-muted">© <strong>MindHelp</strong> • Privacy • Terms • GDPR/HIPAA aware</div>
+      <div class="text-muted">Built with ❤ • Prototype</div>
+    </div>
+  </footer>
+
+  <!-- Login Modal -->
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content card-round">
+        <div class="modal-header border-bottom-0">
+          <h5 class="modal-title" id="loginModalLabel">Login</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="loginForm">
+            <div class="mb-3">
+              <label for="loginEmail" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="loginEmail" placeholder="name@example.com" required>
+            </div>
+            <div class="mb-3">
+              <label for="loginPassword" class="form-label">Password</label>
+              <input type="password" class="form-control" id="loginPassword" placeholder="Password" required>
+            </div>
+            <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input" id="rememberMe">
+              <label class="form-check-label" for="rememberMe">Remember me</label>
+            </div>
+            <div class="text-danger" id="loginError" style="display:none;"></div>
+            <button type="submit" class="btn btn-primary w-100">Login</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // JS for login modal & validation
+    document.getElementById('openLoginBtn').addEventListener('click', function(){
+      var loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+      loginModal.show();
+    });
+
+    document.getElementById('loginForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const email = document.getElementById('loginEmail').value.trim();
+      const pwd = document.getElementById('loginPassword').value.trim();
+      const errorDiv = document.getElementById('loginError');
+      errorDiv.style.display = 'none';
+
+      if (!email || !pwd) {
+        errorDiv.textContent = "Please enter both email and password.";
+        errorDiv.style.display = 'block';
+        return;
+      }
+      // Dummy check
+      if (email === "student@example.com" && pwd === "password123") {
+        // success
+        errorDiv.classList.remove('text-danger');
+        errorDiv.classList.add('text-success');
+        errorDiv.textContent = "Login successful! Redirecting...";
+        errorDiv.style.display = 'block';
+        setTimeout(() => {
+          // redirect or do something
+          window.location.href = "#features";
+        }, 1000);
+      } else {
+        errorDiv.classList.remove('text-success');
+        errorDiv.classList.add('text-danger');
+        errorDiv.textContent = "Invalid credentials.";
+        errorDiv.style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html>
